@@ -4,6 +4,10 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native
 const popularSurahs = [
   { id: 1, name: "Al-Fatihah", ayahs: 7, type: "Meccan" },
   { id: 36, name: "Ya-Sin", ayahs: 83, type: "Meccan" },
+  { id: 112, name: "Al-Ikhlas", ayahs: 4, type: "Meccan" },
+  { id: 2, name: "Al-Baqarah", ayahs: 286, type: "Medinan" },
+  { id: 18, name: "Al-Kahf", ayahs: 110, type: "Meccan" },
+  { id: 114, name: "Al-Nas", ayahs: 6, type: "Meccan" },
 ];
 
 const HomeScreen = () => {

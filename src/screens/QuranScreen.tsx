@@ -6,43 +6,42 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { surahs } from "../data/surahs";
-// import { useNavigation } from "@react-navigation/native";
-// import { surahStartPage } from "../data/surahPages";
-
 
 export default function QuranScreen() {
-//   const navigation = useNavigation<any>();
-
+  const navigation = useNavigation<any>();
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <Text style={styles.title}>Quran</Text>
       <Text style={styles.subtitle}>114 Surahs</Text>
 
-      {/* Search */}
       <TextInput
         placeholder="Search Surah..."
         placeholderTextColor="#9ca3af"
         style={styles.search}
       />
 
-      {/* List */}
       <FlatList
         data={surahs}
         keyExtractor={(item) => item.id.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
-
-            
-          <TouchableOpacity style={styles.card}>
-            {/* Number */}
+          <TouchableOpacity
+            style={styles.card}
+            activeOpacity={0.7}
+            onPress={() =>
+              navigation.navigate("PageReader", {
+                surahId: item.id,
+                surahName: item.name,
+              })
+            }
+          >
             <View style={styles.numberCircle}>
               <Text style={styles.number}>{item.id}</Text>
             </View>
 
-            {/* Info */}
             <View style={styles.info}>
               <Text style={styles.name}>{item.name}</Text>
               <Text style={styles.meta}>
@@ -50,17 +49,20 @@ export default function QuranScreen() {
               </Text>
             </View>
 
-            {/* Arabic */}
             <Text style={styles.arabic}>{item.arabic}</Text>
           </TouchableOpacity>
-
         )}
       />
     </View>
-
   );
-  
 }
+
+
+
+
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

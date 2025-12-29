@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 
-export default function SettingsScreen() {
+export default function BookmarksScreen() {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Settings</Text>

@@ -23,7 +23,7 @@ export default function SurahListScreen() {
             <Text style={{ fontSize: 16, fontWeight: "600" }}>
               {item.id}. {item.name}
             </Text>
-            <Text style={{ fontSize: 18 }}>{item.arabicName}</Text>
+            <Text style={{ fontSize: 18 }}>{item.arabic}</Text>
           </View>
         </TouchableOpacity>
       )}
