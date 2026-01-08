@@ -21,5 +21,8 @@ export const surahStartPage: Record<number, number> = {
     20: 312,
     21: 322,
     22: 332,
+    23: 342,
+    24: 350,
+    25: 359,
   // we can extend all 114 later
 };

@@ -1,3 +1,4 @@
+import React, { useState, useMemo } from "react";
 import {
   View,
   Text,
@@ -11,22 +12,44 @@ import { surahs } from "../data/surahs";
 
 export default function QuranScreen() {
   const navigation = useNavigation<any>();
+  const [search, setSearch] = useState("");
+
+  // 🔍 Filter logic
+  const filteredSurahs = useMemo(() => {
+    if (!search.trim()) return surahs;
+
+    const q = search.toLowerCase();
+
+    return surahs.filter((s) =>
+      s.name.toLowerCase().includes(q) ||
+      s.meaning.toLowerCase().includes(q) ||
+      s.arabic.includes(search) ||
+      s.id.toString() === search
+    );
+  }, [search]);
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Quran</Text>
-      <Text style={styles.subtitle}>114 Surahs</Text>
+      <Text style={styles.subtitle}>
+        {filteredSurahs.length} Surahs
+      </Text>
 
       <TextInput
         placeholder="Search Surah..."
         placeholderTextColor="#9ca3af"
+        value={search}
+        onChangeText={setSearch}
         style={styles.search}
       />
 
       <FlatList
-        data={surahs}
+        data={filteredSurahs}
         keyExtractor={(item) => item.id.toString()}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={
+          <Text style={styles.emptyText}>No surah found</Text>
+        }
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.card}
@@ -56,6 +79,7 @@ export default function QuranScreen() {
     </View>
   );
 }
+
 
 
 
@@ -124,6 +148,11 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontFamily: "System",
+  },
+  emptyText: {
+    color: "#9ca3af",
+    textAlign: "center",
+    marginTop: 20,
   },
 });
 
