@@ -1,15 +1,17 @@
 {
   "expo": {
-    "name": "quran-app",
+    "name": "Quran App",
     "slug": "quran-app",
+    "version": "1.0.0",
     "sdkVersion": "54.0.0",
+    "orientation": "portrait",
+    "platforms": ["android", "ios", "web"],
+    "assetBundlePatterns": ["**/*"],
     "android": {
-      "permissions": [
-        "DETECT_SCREEN_CAPTURE"
-      ]
+      "package": "com.anonymous.quranapp"
     },
-    "plugins": [
-      "expo-asset"
-    ]
+    "ios": {
+      "bundleIdentifier": "com.anonymous.quranapp"
+    }
   }
 }

@@ -17,6 +17,7 @@ export async function ensureMushafPage(page: number) {
     return fileUri;
   }
 
+
   // Download page
   const remoteUri = `https://everyayah.com/data/quranpngs/Page${page}.png`;
   await FileSystem.downloadAsync(remoteUri, fileUri);
